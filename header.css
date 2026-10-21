@@ -1,0 +1,165 @@
+/* Шапка. Токены берём из основного CSS сайта: --ink --muted --accent --accent-2 --line --soft --shadow */
+
+.site-header{
+  position:sticky;top:0;z-index:20;
+  background:rgba(255,255,255,.96);
+  -webkit-backdrop-filter:blur(14px);backdrop-filter:blur(14px);
+  border-bottom:1px solid var(--line);
+}
+
+.hdr-bar,.hdr-sub-inner{max-width:1560px;margin:0 auto;padding:0 32px}
+.hdr-bar{display:flex;align-items:center;gap:32px;height:64px}
+
+.hdr-logo{
+  flex:none;font-size:18px;font-weight:400;line-height:1;
+  color:var(--ink);text-decoration:none;white-space:nowrap;
+}
+.hdr-logo b{font-weight:500}
+
+/* Buy / Rent: подчёркивание садится на нижнюю линию шапки */
+.hdr-deal{display:flex;align-self:stretch;gap:24px}
+.hdr-deal-link{
+  position:relative;display:inline-flex;align-items:center;gap:4px;
+  font-size:14px;font-weight:500;color:var(--muted);text-decoration:none;
+}
+a.hdr-deal-link:hover{color:var(--ink)}
+.hdr-deal-link.is-on{color:var(--ink)}
+.hdr-bar .hdr-deal-link.is-on::after{
+  content:"";position:absolute;left:0;right:0;bottom:-1px;height:2px;background:var(--accent);
+}
+.hdr-deal-link.is-soon{cursor:default;color:var(--muted)}
+.hdr-deal-link small{font-size:12px;font-weight:400}
+
+.hdr-actions{display:flex;align-items:center;gap:8px;margin-left:auto}
+
+.hdr-text-btn{
+  display:inline-flex;align-items:center;gap:8px;height:40px;padding:0 12px;
+  border:0;border-radius:999px;background:transparent;
+  font:inherit;font-size:14px;font-weight:500;color:var(--ink);cursor:pointer;
+}
+.hdr-text-btn:hover,.hdr-text-btn[aria-expanded="true"]{background:var(--soft)}
+.hdr-text-btn svg{width:20px;height:20px;fill:none;stroke:currentColor;stroke-width:1.7;stroke-linejoin:round}
+.hdr-lang{gap:4px;padding:0 8px 0 12px}
+.hdr-lang .hdr-chev{width:16px;height:16px;stroke-width:1.6;stroke-linecap:round;color:var(--muted)}
+
+.hdr-icons{display:flex}
+.hdr-icon{
+  position:relative;display:inline-grid;place-items:center;width:40px;height:40px;
+  border:0;border-radius:999px;background:transparent;color:var(--ink);cursor:pointer;
+}
+.hdr-icon:hover{background:var(--soft);color:var(--accent)}
+.hdr-icon svg{width:20px;height:20px;fill:none;stroke:currentColor;stroke-width:1.7;stroke-linejoin:round;stroke-linecap:round}
+.hdr-badge{
+  position:absolute;top:0;right:0;min-width:16px;height:16px;padding:0 4px;
+  display:grid;place-items:center;border-radius:999px;border:2px solid #fff;box-sizing:content-box;
+  background:var(--accent);color:#fff;font-size:11px;font-weight:600;line-height:1;
+}
+
+.hdr-cta{
+  display:inline-flex;align-items:center;justify-content:center;height:40px;padding:0 16px;margin-left:8px;
+  border-radius:999px;background:var(--accent);color:#fff;
+  font-size:14px;font-weight:600;text-decoration:none;white-space:nowrap;
+}
+.hdr-cta:hover{background:#1648d6;color:#fff}
+
+.hdr-signin{
+  display:inline-flex;align-items:center;height:40px;padding:0 16px;
+  border:1px solid var(--line);border-radius:999px;background:#fff;
+  font-size:14px;font-weight:500;color:var(--ink);text-decoration:none;white-space:nowrap;
+}
+.hdr-signin:hover{border-color:var(--accent);color:var(--accent)}
+
+/* Аккаунт: аватар + стрелка, полное имя внутри меню */
+.hdr-pop{position:relative}
+.hdr-account{
+  display:inline-flex;align-items:center;gap:4px;height:40px;padding:0 8px 0 4px;
+  border:1px solid var(--line);border-radius:999px;background:#fff;color:var(--muted);cursor:pointer;
+}
+.hdr-account:hover,.hdr-account[aria-expanded="true"]{border-color:var(--accent)}
+.hdr-avatar{
+  width:32px;height:32px;display:grid;place-items:center;border-radius:999px;
+  background:var(--soft);color:var(--accent);font-size:12px;font-weight:600;
+}
+.hdr-account .hdr-chev{width:16px;height:16px;fill:none;stroke:currentColor;stroke-width:1.6;stroke-linecap:round;stroke-linejoin:round}
+
+.hdr-menu{
+  position:absolute;right:0;top:calc(100% + 8px);z-index:30;min-width:208px;
+  display:grid;gap:2px;padding:8px;
+  background:#fff;border:1px solid var(--line);border-radius:16px;box-shadow:var(--shadow);
+}
+.hdr-menu[hidden]{display:none}
+.hdr-menu a,.hdr-menu button{
+  display:block;width:100%;padding:8px 12px;border:0;border-radius:8px;background:transparent;
+  font:inherit;font-size:14px;color:var(--ink);text-align:left;text-decoration:none;cursor:pointer;
+}
+.hdr-menu a:hover,.hdr-menu button:hover{background:var(--soft)}
+.hdr-menu [aria-checked="true"]{color:var(--accent);font-weight:500}
+.hdr-menu-lang{min-width:160px}
+.hdr-menu-who{padding:8px 12px 12px;margin-bottom:4px;border-bottom:1px solid var(--line)}
+.hdr-menu-who strong{display:block;font-size:14px;font-weight:600;color:var(--ink)}
+.hdr-menu-who span{font-size:13px;color:var(--muted)}
+.hdr-menu .hdr-menu-out{color:#9b2c2c}
+.hdr-menu-count{float:right;color:var(--muted)}
+
+/* Разделы каталога: обычным рядом слева, а не таблицей на всю ширину */
+.hdr-sub{border-top:1px solid var(--line)}
+.hdr-sub-nav{display:flex;gap:32px;height:48px;overflow-x:auto;scrollbar-width:none}
+.hdr-sub-nav::-webkit-scrollbar{display:none}
+.hdr-sub-nav a{
+  position:relative;display:inline-flex;align-items:center;flex:none;
+  font-size:14px;font-weight:500;color:var(--muted);text-decoration:none;
+}
+.hdr-sub-nav a:hover{color:var(--ink)}
+.hdr-sub-nav a.is-on{color:var(--ink)}
+.hdr-sub-nav a.is-on::after{content:"";position:absolute;left:0;right:0;bottom:0;height:2px;background:var(--accent)}
+
+.hdr-burger{display:none}
+.hdr-sheet[hidden]{display:none}
+
+@media (max-width:1180px){
+  .hdr-bar{gap:24px}
+  .hdr-assistant{width:40px;padding:0;justify-content:center;font-size:0;gap:0}
+}
+
+@media (max-width:1023px){
+  .hdr-bar{height:56px;padding:0 16px;gap:16px}
+  .hdr-sub-inner{padding:0 16px}
+  .hdr-deal,.hdr-assistant,.hdr-pop:has(.hdr-lang),.hdr-icons,.hdr-actions>.hdr-cta{display:none}
+  .hdr-actions{gap:8px}
+  .hdr-burger{
+    display:inline-grid;place-items:center;width:40px;height:40px;
+    border:0;border-radius:999px;background:var(--soft);color:var(--ink);cursor:pointer;
+  }
+  .hdr-burger svg{width:20px;height:20px;fill:none;stroke:currentColor;stroke-width:1.8;stroke-linecap:round}
+  .hdr-sub{display:none}
+
+  /* Меню на весь экран, влезает без прокрутки: шаги от высоты экрана */
+  .hdr-sheet{
+    position:fixed;inset:0;z-index:50;display:flex;flex-direction:column;
+    height:100svh;padding:0 16px max(16px,env(safe-area-inset-bottom));background:#fff;
+  }
+  .hdr-sheet-top{display:flex;align-items:center;justify-content:space-between;height:56px;flex:none}
+  .hdr-sheet-body{flex:1;min-height:0;display:flex;flex-direction:column;gap:clamp(16px,3svh,32px);padding-top:clamp(8px,2svh,24px)}
+  .hdr-sheet-deal{display:flex;gap:24px}
+  .hdr-sheet-deal .hdr-deal-link{font-size:16px}
+  .hdr-sheet-deal .is-on{color:var(--accent)}
+  .hdr-sheet-nav{display:grid;grid-template-columns:1fr 1fr;column-gap:16px;border-top:1px solid var(--line)}
+  .hdr-sheet-nav a{
+    display:flex;align-items:center;height:clamp(40px,6.4svh,56px);border-bottom:1px solid var(--line);
+    font-size:clamp(16px,2.6svh,20px);font-weight:500;color:var(--ink);text-decoration:none;
+  }
+  .hdr-sheet-tools{display:flex;flex-wrap:wrap;align-items:center;gap:8px}
+  .hdr-sheet-tools>a,.hdr-sheet-tools>button{
+    display:inline-flex;align-items:center;height:40px;padding:0 16px;border:1px solid var(--line);border-radius:999px;
+    background:#fff;font:inherit;font-size:14px;font-weight:500;color:var(--ink);text-decoration:none;
+  }
+  .hdr-sheet-lang{display:inline-flex;padding:4px;border-radius:999px;background:var(--soft)}
+  .hdr-sheet-lang button{height:32px;padding:0 12px;border:0;border-radius:999px;background:transparent;font:inherit;font-size:14px;font-weight:500;color:var(--muted)}
+  .hdr-sheet-lang [aria-pressed="true"]{background:#fff;color:var(--ink)}
+  .hdr-sheet-cta{flex:none;height:48px;margin:16px 0 0;font-size:16px}
+}
+
+@media (max-width:420px){
+  .hdr-logo{font-size:16px}
+  .hdr-signin{padding:0 12px}
+}
