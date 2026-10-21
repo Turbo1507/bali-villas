@@ -1,0 +1,230 @@
+/* Правки поверх CSS стенда: шкала текста, сетка 8, контраст, фокус, размеры нажатия */
+
+:root{
+  --accent-2:#1648d6;          /* было #3b76ff: белый текст на нём 4.0:1 */
+  --accent-ink:#1546c8;        /* синий текст на светло-синих плашках */
+}
+::selection{background:#dbe6ff;color:var(--ink)}
+body{font-variant-numeric:tabular-nums}
+
+/* фокус с клавиатуры виден везде, мышью не мигает */
+:where(a,button,input,select,textarea,summary,[tabindex]):focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+.search-hero:focus-within{outline:2px solid var(--accent);outline-offset:2px}
+
+/* подписи обычным регистром, без разрядки */
+.filters legend,.filter-select-label,.cabinet-filter-label,.filter-select-group-title,
+.listing-contact-kicker,.soon-badge,.deal-switch span,.tab.soon span{
+  text-transform:none;letter-spacing:0;font-size:13px;font-weight:500;color:var(--muted);
+}
+.listing-contact-kicker{font-size:14px}
+.wizard-lead{margin:8px 0 0;color:var(--muted);font-size:14px}
+
+/* веса: 400 / 500 / 600 / 700 вместо 650 / 750 / 800 */
+.offer-title,.listing-seller,.cabinet-side-name,.chip-picker-title,.listing-facts li strong{font-weight:600}
+.offer-price,.listing-price,.listing-contact-price,.listing-stats strong,.cabinet-price{font-weight:700}
+.listing-dates,.listing-place,.offer-place,.listing-stats span,.listing-facts li span,.listing-amenities li,
+.filter-select-value,.ui-select-trigger,.cabinet-nav a,.cabinet-summary span,.cabinet-filters button,
+.cabinet-actions a,.cabinet-actions button,.lead-contacts span,.wizard-step-count,.field,.view-switch button,
+.seller-contact,.hero-links a,.search-hero-map,.listing-amenity-group h3,.chip-picker legend,.chip-fieldset legend{font-weight:500}
+.btn,.place-btn,.cabinet-add,.auth-switch a,.wizard-step-label{font-weight:600}
+.status-pill,.owner-pill,.badge,.cabinet-nav-count,.filter-select-count,.wizard-step-num,.lead-avatar,.cabinet-summary strong{font-weight:600}
+
+/* шкала: 12 / 13 / 14 / 16 / 20 / 24 / 32 / 48 */
+.home-hero h1{font-size:clamp(32px,5vw,48px);margin-bottom:32px}
+.listing-head h1{font-size:clamp(28px,4vw,40px)}
+.listing-price{font-size:32px;gap:8px}
+.listing-price span{font-size:16px;font-weight:500}
+.listing-panel h2,.listing-contact h2{font-size:20px}
+.offer-price{font-size:24px}
+.offer-title{font-size:16px}
+.listing-stats span,.listing-facts li span{font-size:13px}
+.listing-amenities li{font-size:14px}
+.listing-dates{font-size:13px;letter-spacing:0;margin-top:0}
+.cabinet-card .card-title,.lead-card .card-title{margin:8px 0 4px;font-size:18px;line-height:1.3;letter-spacing:-.02em}
+.site-footer h2{font-size:14px;margin:0 0 8px}
+
+/* кнопки: 40 обычная, 48 главная в форме */
+.btn,.btn-line,.ghost-btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;min-height:40px;padding:0 16px;border-radius:12px;font-size:14px}
+.btn-line,.ghost-btn{border:1px solid var(--line)}
+.auth-submit,.listing-contact-actions .btn{min-height:48px;font-size:16px}
+.place-btn{height:40px}
+.btn:disabled,.btn-line:disabled{opacity:.48;cursor:not-allowed}
+.wizard-actions .btn-line{color:var(--ink)}
+
+/* карточка в каталоге */
+.offer-body{padding:16px;gap:4px}
+.offer-title{margin-top:4px}
+.offer-params{margin-top:4px}
+.offer-place{color:var(--muted);font-weight:500}
+.offer-own{margin-top:auto;padding-top:8px;color:var(--muted);font-size:13px;font-weight:500}
+.badge{padding:4px 12px;font-weight:600}
+.offer-dots{gap:4px}
+.heart{top:12px;right:12px;width:40px;height:40px;color:var(--ink)}
+.heart svg{width:20px;height:20px;fill:none;stroke:currentColor;stroke-width:1.8;stroke-linejoin:round}
+.heart[aria-pressed="true"] svg{fill:#d93a3a;stroke:#d93a3a}
+.photo-nav{width:40px;height:40px}
+.arrows{gap:8px}
+.arrows button{width:40px;height:40px;display:grid;place-items:center;padding:0;color:var(--ink)}
+.arrows button:hover{border-color:var(--accent);color:var(--accent)}
+.arrows svg,.photo-nav svg{width:20px;height:20px;fill:none;stroke:currentColor;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
+.carousel{gap:16px}
+.block{margin-top:40px}
+.block-head{margin-bottom:16px}
+.block-head h2{margin:0;font-size:24px}
+
+/* главная */
+.home-body{padding-top:40px}
+
+/* каталог */
+.catalog-layout{gap:24px}
+.filters{padding:24px 16px 16px;gap:16px}
+.filter-actions{gap:8px}
+.chips{gap:8px}
+.chip{display:inline-flex;align-items:center;min-height:40px;padding:0 16px;font-weight:500}
+.view-switch{padding:4px}
+.view-switch button{height:36px;min-width:80px;padding:0 16px}
+.ui-select-trigger{min-height:48px;padding:0 40px 0 16px}
+.filter-select-trigger{padding:8px 56px 8px 16px}
+.catalog-more{display:flex;flex-direction:column;align-items:center;gap:8px;margin:32px 0 0}
+.catalog-more p{margin:0;color:var(--muted);font-size:14px}
+.nav-soon{font-size:12px;font-weight:400;color:var(--muted);margin-left:4px}
+
+/* страница объекта */
+.listing-stats{gap:8px}
+.listing-stats div{padding:16px}
+.listing-facts{gap:8px}
+.listing-facts li{padding:8px 16px;gap:4px}
+.listing-amenities li{padding:8px 16px}
+.listing-amenity-group+.listing-amenity-group{margin-top:16px}
+.listing-seller{display:inline-flex;align-items:center;min-height:40px;font-size:20px}
+.listing-contact{padding:24px;gap:16px}
+.listing-contact-body{gap:16px}
+.listing-contact-actions{padding-top:16px;margin-top:16px}
+.listing-contact textarea{min-height:80px;resize:vertical}
+@media (min-width:881px){.listing-contact .seller-contact{min-height:32px;padding:0 12px}.listing-contact .seller-contacts{margin-top:8px}}
+.field{font-size:14px;color:var(--ink);gap:8px}
+.field input[aria-invalid="true"],.field textarea[aria-invalid="true"]{border-color:#c43d3d}
+.field-error{color:#b42323;font-size:13px;font-weight:500}
+.form-done{display:grid;gap:8px;padding:24px 0}
+.form-done h2{margin:0}
+.form-done p{margin:0;color:var(--muted)}
+.seller-contact{padding:0 16px}
+
+/* вход */
+.auth-card{gap:16px;padding:32px}
+.auth-card h1{font-size:32px}
+
+/* кабинет: компактнее, чтобы список читался */
+.cabinet-shell{gap:32px}
+.cabinet-side{padding:16px;gap:16px}
+.cabinet-toolbar{gap:16px;padding:16px 24px;margin-bottom:24px}
+.cabinet-summary{margin-bottom:16px}
+.cabinet-summary a,.cabinet-summary button{min-height:40px;padding:0 16px 0 8px}
+.cabinet-filters{margin-bottom:16px}
+.cabinet-filters button{height:40px;padding:0 16px}
+.cabinet-filters button.on span{color:#fff}
+.cabinet-list{display:grid;gap:16px}
+.cabinet-card:not(.lead-card){grid-template-columns:168px 1fr;padding:16px;border-radius:16px}
+.cabinet-card{padding:16px;border-radius:16px}
+.cabinet-thumb{border-radius:8px}
+.cabinet-actions{gap:8px;margin-top:16px;align-items:center}
+.cabinet-actions a,.cabinet-actions button{height:40px;padding:0 16px;font-size:14px}
+.cabinet-actions .action-warn{color:var(--ink);background:#fff;border-color:var(--line)}
+.status-pill{padding:4px 8px}
+.owner-pill{padding:4px 8px;font-size:12px}
+.mod-desc{margin-top:8px}
+
+/* без цветной полосы слева: статус уже на плашке */
+.cabinet-card.ours{box-shadow:0 8px 20px rgba(16,24,40,.04)}
+.lead-card.lead-new{background:#f7f9ff;box-shadow:none}
+.lead-card.lead-replied{background:#fff;box-shadow:none}
+
+/* синий текст на светло-синем: тёмнее, иначе 4.2:1 */
+.status-pill,.status-pill.status-new,.status-pill.status-published,.status-pill.status-replied,
+.status-pill.status-reserved,.status-pill.status-verified,.lead-card.lead-new .status-pill,
+.lead-avatar,.owner-pill.agency,.owner-pill.ours{color:var(--accent-ink)}
+.lead-card.lead-new .lead-avatar{color:var(--accent-ink)}
+.lead-avatar{border-radius:12px;font-size:16px}
+.lead-message{margin:8px 0 16px;padding:8px 16px}
+.lead-contacts{gap:8px}
+.lead-contacts span{height:32px;padding:0 12px;font-size:13px}
+.leads-toolbar{gap:8px;margin-bottom:16px}
+.leads-search,.leads-toolbar .ui-select-trigger{height:48px;min-height:48px;padding-left:16px}
+
+/* меню «ещё» у своего объявления */
+.card-more{position:relative}
+.card-more-btn{width:40px;padding:0!important;justify-content:center}
+.card-more-btn svg{width:20px;height:20px;fill:currentColor}
+.card-more-menu{position:absolute;right:0;top:calc(100% + 8px);z-index:5;min-width:208px;display:grid;gap:2px;padding:8px;background:#fff;border:1px solid var(--line);border-radius:16px;box-shadow:var(--shadow)}
+.card-more-menu[hidden]{display:none}
+.cabinet-actions .card-more-menu button{width:100%;height:40px;padding:0 12px;border:0;border-radius:8px;justify-content:flex-start;background:transparent}
+.cabinet-actions .card-more-menu button:hover{background:var(--soft)}
+.cabinet-actions .card-more-menu .is-danger{color:#b42323}
+.card-undo{display:flex;align-items:center;gap:16px;margin-top:16px;padding:8px 8px 8px 16px;border-radius:12px;background:var(--soft);font-size:14px}
+.card-undo button{margin-left:auto}
+
+/* мастер объявления */
+.wizard-steps{gap:8px}
+.wizard-steps button{padding:8px}
+.type-grid{gap:8px}
+.type-grid button{padding:8px;gap:4px;font-weight:500}
+
+/* подвал */
+.footer-brand .hdr-logo{display:inline-block;font-size:18px}
+.site-footer nav{gap:0}
+.site-footer nav a,.site-footer nav button{display:flex;align-items:center;min-height:40px}
+
+@media (max-width:880px){
+  .cabinet-nav{scrollbar-width:none;gap:8px}
+  .cabinet-nav::-webkit-scrollbar{display:none}
+  .cabinet-nav a{min-height:40px;padding:0 16px}
+}
+@media (max-width:600px){
+  .cabinet-card:not(.lead-card){grid-template-columns:1fr}
+  .cabinet-toolbar{padding:16px}
+  .auth-card{padding:24px 16px}
+  .listing-ask-dock .btn{height:40px;padding:0 16px;font-size:14px}
+  .seller-contact{min-height:40px;padding:0 8px}
+  .search-hero-map{min-height:40px}
+}
+
+/* скрытые «показать ещё» карточки: у .offer свой display */
+.catalog-grid>[hidden]{display:none}
+.listing-crumb{display:flex;align-items:center;gap:8px;color:var(--muted)}
+.listing-crumb a,.listing-crumb span{color:var(--muted);font-weight:500}
+.listing-crumb a{display:inline-flex;align-items:center;min-height:40px}
+.listing-crumb a:hover{color:var(--accent)}
+.cabinet-sort span,.sort span,.lead-listing a{font-weight:500}
+.cabinet-nav-count,.wizard-step-num{font-size:12px}
+.offer-photo .photo-nav{width:40px;height:40px}
+.search-hero-map{min-height:40px}
+.wizard input[type=checkbox],.wizard-panel input[type=checkbox]{width:20px;height:20px;accent-color:var(--accent)}
+@media (max-width:880px){.cabinet-add{height:40px}}
+.cabinet-list>[hidden]{display:none}
+.offer .offer-photo .photo-nav{width:40px;height:40px}
+.photo-nav:hover{transform:translateY(-50%) scale(1)}
+.listing-tags .chip{min-height:32px;padding:0 12px;font-size:14px}
+.fact-hint{display:block;margin-top:4px;color:var(--muted);font-size:13px;font-weight:400}
+@media (max-width:600px){.lead-card .lead-avatar{display:none}}
+
+/* плотный вид списка в кабинете */
+.density{display:inline-flex;padding:4px;border:1px solid var(--line);border-radius:999px;background:#fff}
+.density button{height:32px;padding:0 16px;border:0;border-radius:999px;background:transparent;font:inherit;font-size:14px;font-weight:500;color:var(--muted);cursor:pointer}
+.density [aria-pressed="true"]{background:var(--soft);color:var(--ink)}
+.cabinet-head{display:flex;align-items:flex-end;justify-content:space-between;gap:16px}
+.cabinet-list.is-compact{gap:8px}
+.cabinet-list.is-compact .cabinet-card:not(.lead-card){grid-template-columns:64px 1fr;padding:8px 16px 8px 8px;box-shadow:none}
+.cabinet-list.is-compact .cabinet-thumb{aspect-ratio:1}
+.cabinet-list.is-compact .cabinet-card-body{display:grid;grid-template-columns:minmax(0,1fr) auto;column-gap:16px;align-items:center}
+.cabinet-list.is-compact .cabinet-card-top{grid-column:2;grid-row:1/4;display:flex;flex-direction:column;align-items:flex-end;gap:4px}
+.cabinet-list.is-compact .card-title{grid-column:1;margin:0;font-size:16px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.cabinet-list.is-compact .meta,.cabinet-list.is-compact .listing-dates{grid-column:1;font-size:13px}
+.cabinet-list.is-compact .mod-desc{display:none}
+.cabinet-list.is-compact .cabinet-actions{grid-column:1/-1;margin-top:8px}
+.cabinet-list.is-compact .cabinet-actions a,.cabinet-list.is-compact .cabinet-actions>button,.cabinet-list.is-compact .card-more-btn{height:32px}
+@media (max-width:600px){.density{display:none}}
+.listing-facts li{align-content:start}
+/* форма заявки целиком, без прокрутки внутри карточки; липнет только там, где влезает */
+.listing-contact{position:static;max-height:none}
+.listing-contact-body{overflow:visible;padding-right:0}
+@media (min-width:881px) and (min-height:1000px){.listing-contact{position:sticky;top:128px}}

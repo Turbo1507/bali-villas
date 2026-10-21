@@ -1,0 +1,52 @@
+// Тексты объявлений на стенде частично по-русски, а интерфейс английский.
+// Для превью переводим словарём; на стенде это поле перевода у объявления.
+export const en = [
+  // заголовки объявлений
+  ['Вилла с бассейном в Чангу', 'Villa with a pool in Canggu'],
+  ['Вилла Island Homes у Echo Beach', 'Island Homes villa near Echo Beach'],
+  ['Квартира в Семиньяке', 'Apartment in Seminyak'],
+  ['Дом с садом в Умаласе', 'House with a garden in Umalas'],
+  ['Вилла у рисовых террас в Убуде', 'Villa by the rice terraces in Ubud'],
+  ['Участок в Джимбаране', 'Land plot in Jimbaran'],
+  ['Новая вилла на обрыве Улувату', 'New clifftop villa in Uluwatu'],
+  ['Дом в Сануре', 'House in Sanur'],
+  ['Вилла 3BR с джакузи в Бераве', '3BR villa with a jacuzzi in Berawa'],
+  ['Участок 12 соток у рисовых полей', '1,200 m² plot by the rice fields'],
+  ['Студия собственника в Чангу', 'Owner’s studio in Canggu'],
+  ['Семейный дом в Сануре', 'Family house in Sanur'],
+  ['Пентхаус в Семиньяке с rooftop', 'Seminyak penthouse with a rooftop'],
+  ['Компактная вилла в Переренане', 'Compact villa in Pererenan'],
+  ['Комната собственника в Ловине', 'Owner’s room in Lovina'],
+  ['Вилла у пляжа Джимбаран', 'Villa near Jimbaran beach'],
+  ['Вилла в Нуса Дуа — бронь', 'Villa in Nusa Dua, reserved'],
+  ['Вилла в Кедунгу — бронь', 'Villa in Kedungu, reserved'],
+  ['Вилла в Табанане — продана', 'Villa in Tabanan, sold'],
+  ['Off-plan вилла на обрыве Пекату', 'Off-plan clifftop villa in Pecatu'],
+  ['Черновик: лофт в Куте', 'Draft: loft in Kuta'],
+  // описания и комментарии модерации
+  ['Двухспальная вилла в Чангу с бассейном и садом. Готовый объект нашей стройки.', 'Two-bedroom villa in Canggu with a pool and a garden. Completed, built by us.'],
+  ['Частный продавец. Проверить контакты и право собственности.', 'Private seller. Check contacts and ownership.'],
+  ['Тихий район, рядом школа. Просим проверить адрес.', 'Quiet area near a school. Please check the address.'],
+  ['Стройка 70%. Нужны свежие фото прогресса.', 'Construction 70% done. Need fresh progress photos.'],
+  ['Сдача через 14 месяцев. Нужны рендеры и график стройки.', 'Handover in 14 months. Need renders and a build schedule.'],
+  ['Объект Island Homes. Короткий leasehold — проверить срок.', 'Island Homes listing. Short leasehold, check the term.'],
+  ['Двухуровневый пентхаус. Просим проверить фото и описание перед публикацией.', 'Two-level penthouse. Please check photos and description before publishing.'],
+  ['Готовая вилла в пяти минутах от пляжа. Нужна проверка документов leasehold.', 'Completed villa five minutes from the beach. Leasehold documents need checking.'],
+  ['Freehold участок под виллу. Зонинг уточняется.', 'Freehold plot for a villa. Zoning being confirmed.'],
+  ['Интересует точный срок leasehold и коммуналка.', 'Interested in the exact leasehold term and utility costs.'],
+  ['перезвонить', 'Please call me back'],
+  // удобства
+  ['Участок и улица', 'Outdoor'], ['Внутри', 'Indoor'], ['Сервис', 'Services'],
+  ['Крыша / rooftop', 'Rooftop'], ['Детская площадка', 'Playground'], ['Зарядка EV', 'EV charging'],
+  ['Комнаты персонала', 'Staff quarters'], ['Фильтрация воды', 'Water filtration'], ['Винный погреб', 'Wine cellar'],
+  ['Бассейн', 'Pool'], ['Сад', 'Garden'], ['Парковка', 'Parking'], ['Гараж', 'Garage'], ['Барбекю', 'BBQ'],
+  ['Кондиционер', 'Air conditioning'], ['Кухня', 'Kitchen'], ['Спортзал', 'Gym'], ['Кинозал', 'Home cinema'],
+  ['Умный дом', 'Smart home'], ['Прачечная', 'Laundry'], ['Сауна', 'Sauna'], ['Хаускипинг', 'Housekeeping'],
+  ['Охрана', 'Security'], ['Генератор', 'Generator'],
+  // районы
+  ['Чангу', 'Canggu'], ['Семиньяк', 'Seminyak'], ['Умалас', 'Umalas'], ['Убуд', 'Ubud'], ['Джимбаран', 'Jimbaran'],
+  ['Улувату', 'Uluwatu'], ['Санур', 'Sanur'], ['Берава', 'Berawa'], ['Переренан', 'Pererenan'], ['Ловина', 'Lovina'],
+  ['Нуса Дуа', 'Nusa Dua'], ['Кедунгу', 'Kedungu'], ['Табанан', 'Tabanan'], ['Пекату', 'Pecatu'], ['Кута', 'Kuta'],
+  // анонимные покупатели из build.mjs
+  ['Тестовый покупатель', 'Test buyer'], ['Второй покупатель', 'Second buyer'], ['>ТП<', '>TB<'], ['>ВП<', '>SB<'],
+].sort((a, b) => b[0].length - a[0].length);
