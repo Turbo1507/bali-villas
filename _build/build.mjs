@@ -166,6 +166,7 @@ const pageFixes = [
     .replace('<textarea rows="3"', '<textarea name="message" rows="3"'),
   // разделы без содержимого помечаем в навигации
   (h) => h.replace(/(<a href="\/commercial"[^>]*>)Commercial<\/a>/g, '$1Commercial <small class="nav-soon">soon</small></a>'),
+  (h) => h.replace(/(<iframe title="Location"[^>]*) loading="lazy"/, '$1'),
   (h) => h.replace('<script src="header.js"></script>', '<script src="header.js"></script><script src="fixes.js"></script>'),
 ];
 

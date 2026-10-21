@@ -228,3 +228,4 @@ body{font-variant-numeric:tabular-nums}
 .listing-contact{position:static;max-height:none}
 .listing-contact-body{overflow:visible;padding-right:0}
 @media (min-width:881px) and (min-height:1000px){.listing-contact{position:sticky;top:128px}}
+.listing-aside{align-content:start}
