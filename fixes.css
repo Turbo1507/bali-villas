@@ -229,3 +229,17 @@ body{font-variant-numeric:tabular-nums}
 .listing-contact-body{overflow:visible;padding-right:0}
 @media (min-width:881px) and (min-height:1000px){.listing-contact{position:sticky;top:128px}}
 .listing-aside{align-content:start}
+
+/* карточка каталога: стрелки и сердечко компактнее, зона нажатия 40 */
+.offer-photo .photo-nav,.offer .offer-photo .photo-nav,.offer-photo .heart{width:32px;height:32px}
+.offer-photo .photo-nav::after,.offer-photo .heart::after{content:"";position:absolute;inset:-4px}
+.offer-photo .photo-nav svg,.offer-photo .heart svg{width:16px;height:16px}
+.offer-photo .photo-nav.prev{left:12px}
+.offer-photo .photo-nav.next{right:12px}
+.offer-photo .heart{top:12px;right:12px}
+/* наведение на карточку: только рамка, без подъёма и тени */
+.offer:hover{transform:none;box-shadow:0 8px 22px rgba(16,24,40,.04);border-color:#c9d3ee}
+/* явное действие в карточке */
+.offer-body{padding-bottom:16px}
+.offer-cta{margin:0 16px 16px;justify-content:center}
+.offer-cta:hover{background:var(--accent-2)}

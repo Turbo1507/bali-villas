@@ -153,6 +153,9 @@ const pageFixes = [
   // уровни заголовков: после h1 карточки идут h2
   (h, o) => o.cardH2 ? h.replace(/<h3>([^<]*)<\/h3>/g, '<h2 class="card-title">$1</h2>')
     .replace(/<h3 class="offer-title">([^<]*)<\/h3>/g, '<h2 class="offer-title">$1</h2>') : h,
+  // карточка каталога: явное действие под описанием, ведёт сразу к форме связи
+  (h) => h.replace(/(<a class="offer-body" href="([^"]+)">[\s\S]*?<\/a>)<\/article>/g,
+    '$1<a class="btn offer-cta" href="$2#listing-ask">Contact the seller</a></article>'),
   // своё объявление: статусы и снятие с публикации прячем в меню «ещё»
   (h) => h.replace(/<button type="button">Reserved<\/button><button class="action-warn" type="button">Sold<\/button><button type="button">Unpublish<\/button>/g,
     `<div class="card-more"><button type="button" class="card-more-btn" aria-haspopup="menu" aria-expanded="false" aria-label="More actions">${svg.more}</button>`
