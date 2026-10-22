@@ -243,3 +243,39 @@ body{font-variant-numeric:tabular-nums}
 .offer-body{padding-bottom:16px}
 .offer-cta{margin:0 16px 16px;justify-content:center}
 .offer-cta:hover{background:var(--accent-2)}
+
+/* поля ввода: рамка видна (3:1 к белому), наведение и фокус заметны */
+.field input,.field textarea,.pair input,.leads-search{border:1px solid #8b94a5;background:#fff}
+.field input:hover,.field textarea:hover,.pair input:hover,.leads-search:hover{border-color:var(--ink)}
+.field input:focus,.field textarea:focus,.pair input:focus,.leads-search:focus{border-color:var(--accent);outline:2px solid var(--accent);outline-offset:0}
+.field input[aria-invalid="true"],.field textarea[aria-invalid="true"]{border-color:#c62828}
+input,textarea{scroll-margin-top:96px}
+
+/* вход */
+.auth-page{padding:48px 16px 64px}
+.auth-card{width:min(440px,100%);gap:16px}
+.auth-card .field{display:grid;gap:8px;color:var(--ink);font-size:14px;font-weight:500}
+.auth-card .field input{height:48px;padding:0 16px;border-radius:12px;font-size:16px;color:var(--ink)}
+.pass-wrap{position:relative;display:block}
+.pass-wrap input{width:100%;padding-right:80px}
+.pass-toggle{position:absolute;right:4px;top:4px;height:40px;min-width:64px;padding:0 12px;border:0;border-radius:8px;background:none;color:var(--accent-ink);font:inherit;font-size:14px;font-weight:600;cursor:pointer}
+.pass-toggle:hover{background:var(--soft)}
+.auth-submit{margin-top:8px}
+.auth-note{margin:0;padding:12px 16px;border-radius:12px;background:var(--soft);color:var(--ink);font-size:14px}
+.auth-alt{display:grid;gap:8px;margin-top:8px;padding-top:24px;border-top:1px solid var(--line);text-align:center}
+.auth-alt p{margin:0;color:var(--muted);font-size:14px}
+.auth-create{width:100%;min-height:48px;justify-content:center;font-size:16px}
+.auth-card .field-error{color:#c62828;font-size:13px;font-weight:500}
+
+/* лента на главной: своя прокрутка без системной полосы */
+.carousel{scrollbar-width:none;padding-bottom:0}
+.carousel::-webkit-scrollbar{display:none}
+.arrows button:disabled{opacity:.4;cursor:default;border-color:var(--line);color:var(--ink)}
+.offer-photo .offer-track{transition:transform .3s ease}
+
+/* фильтры: на ПК панель всегда видна, кнопка не нужна */
+@media (min-width:801px){.filters-toggle{display:none}}
+.filters-backdrop[hidden]{display:none}
+.chip[aria-pressed="true"]{background:var(--accent);color:#fff;border-color:var(--accent)}
+.filters-close{height:40px;padding:0 16px;align-items:center;border-radius:999px;font-size:14px;font-weight:500}
+.filters-head{align-items:center}

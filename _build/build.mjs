@@ -86,6 +86,7 @@ function build(file, out, o) {
   for (const fix of o.fixes || []) html = fix(html);
   for (const fix of pageFixes) html = fix(html, o);
   html = html.replace(/href="(\/[^"]*)"/g, (m, h) => `href="${localHref(h)}"`);
+  html = html.replace(/<title>[^<]*<\/title>/,`<title>${TITLES[out]} | UNIT. BALI VILLAS</title>`);
   html = html.replace('<head>', '<head><meta name="robots" content="noindex, nofollow">');
   fs.writeFileSync(path.join(root, out), html);
   console.log(out, html.length);
@@ -121,7 +122,7 @@ const svg = {
   next: '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="m9.5 6 6 6-6 6"/></svg>',
   more: '<svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="6" cy="12" r="1.6"/><circle cx="12" cy="12" r="1.6"/><circle cx="18" cy="12" r="1.6"/></svg>',
 };
-const wordmark = '<a class="hdr-logo" href="/"><b>UNIT.</b>BALI VILLAS</a>';
+const wordmark = '<a class="hdr-logo" href="/"><b>UNIT.</b>&nbsp;BALI VILLAS</a>';
 
 const pageFixes = [
   // русские тексты объявлений -> EN
@@ -142,7 +143,7 @@ const pageFixes = [
     .replace(/(<button type="button" aria-label="Next">)›/g, `$1${svg.next}`),
   // подписи полям «от/до» в фильтрах
   (h) => h.replace(/<legend>([^<]+)<\/legend><div class="pair"><input placeholder="from"([^>]*)><input placeholder="to"/g,
-    (m, l) => `<legend>${l}</legend><div class="pair"><input placeholder="Min" aria-label="${l} min" inputmode="numeric"$2><input placeholder="Max" aria-label="${l} max" inputmode="numeric"`),
+    (m, l, a) => `<legend>${l}</legend><div class="pair"><input placeholder="Min" aria-label="${l} min" inputmode="numeric"${a}><input placeholder="Max" aria-label="${l} max" inputmode="numeric"`),
   // главная: без плашки «Bali» и без второго ряда разделов (он уже есть под шапкой)
   (h) => h.replace(/<p class="home-hero-geo">Bali<\/p>/, '').replace(/<div class="hero-links">[\s\S]*?<\/div>/, ''),
   // логотип в подвале как в шапке
@@ -170,9 +171,22 @@ const pageFixes = [
   // разделы без содержимого помечаем в навигации
   (h) => h.replace(/(<a href="\/commercial"[^>]*>)Commercial<\/a>/g, '$1Commercial <small class="nav-soon">soon</small></a>'),
   (h) => h.replace(/(<iframe title="Location"[^>]*) loading="lazy"/, '$1'),
+  // текст для WhatsApp тоже по-английски, как весь интерфейс
+  (h) => h.replace(/(wa\.me\/\d+\?text=)([^"]+)/g, (m, p, t) => {
+    let s = decodeURIComponent(t);
+    for (const [ru, tr] of en) s = s.replaceAll(ru, tr);
+    return p + encodeURIComponent(s);
+  }),
+  // вход: короче подводка, пароль можно показать, регистрация отдельной кнопкой
+  (h) => h.replace('One sign-in for private users and agencies. Enter your email and password.', 'One account for private sellers and agencies.')
+    .replace('<input type="password" autocomplete="current-password" placeholder="••••••••" required="" name="password">',
+      '<span class="pass-wrap"><input type="password" autocomplete="current-password" required="" minlength="6" name="password" id="password"><button type="button" class="pass-toggle" aria-controls="password" aria-pressed="false">Show</button></span>')
+    .replace(/<p class="auth-switch">No account\?(?:<!-- -->)? <a href="([^"]+)">Create one<\/a><\/p>/,
+      '<div class="auth-alt"><p>No account yet?</p><a class="btn btn-line auth-create" href="$1">Create an account</a></div>'),
   (h) => h.replace('<script src="header.js"></script>', '<script src="header.js"></script><script src="fixes.js"></script>'),
 ];
 
+const TITLES = { 'index.html': 'Property for sale in Bali', 'catalog.html': 'Catalog', 'map.html': 'Map', 'listing.html': 'Villa with a pool in Canggu', 'commercial.html': 'Commercial', 'services.html': 'Services', 'login.html': 'Sign in', 'leads.html': 'Requests', 'cab-listings.html': 'All listings', 'cab-moderation.html': 'Moderation', 'cab-new.html': 'New listing', 'cabinet.html': 'Our listings' };
 const pub = { buyOn: true, sub: true };
 const cab = { user: true, leads: 4, cardH2: true };
 build('home.html', 'index.html', pub);
